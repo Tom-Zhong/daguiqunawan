@@ -1,0 +1,55 @@
+<style lang="less">
+.wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    will-change: transform;
+    transition: transform 0.3s linear;
+    transform: translate3d(0, 0, 0);
+}
+.hidden {
+  transform: translate3d(-100%, 0, 0)
+}
+</style>
+<template>
+  <view class="wrappe">
+     <view style="height:100vh; width:100%;display:bock; position: absolute; top: 0; right: 0; bottom: 20%; left: 0;">
+        <view style="position: absolute; bottom: 0px; left: 0px; right: 0px; padding: 10px 0; font-size: 12px;">
+            <image style="display: block; margin: 0 auto 60px; width: 220px; height: 40px" mode="aspectFill" src="/assets/img/title.png"></image>
+            <view style="text-align: center; font-size: 14px; padding-bottom: 5px; color: #fff">随时随地想浪就浪</view>
+            <view style="text-align: center; color: #fff">Copyright © 2018 大贵</view>
+        </view>
+     </view>
+     <image style="height:100vh; width:100%; display:bock;" mode="aspectFill" src="https://img.zcool.cn/community/01205d5b615743a801206a35a479e8.jpg@3000w_1l_2o_100sh.jpg" ></image>
+   
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class Welcome extends wepy.page {
+  config = {
+    navigationBarTitleText: '大贵去哪玩'
+  }
+  // data = {
+  //   hidden: 'show',
+  //   showIndex: false
+  // }
+  // props = {
+  //   showIndex: {
+  //     type: Boolean,
+  //     default: false,
+  //     twoWay: true
+  //   }
+  // }
+  methods = {}
+  onLoad () {
+    console.log('[Page Welcome] I will dissappear in 3 seconds!')
+    setTimeout(() => {
+      this.$switch({url: '/pages/index'})
+    }, 3000)
+  }
+}
+</script>

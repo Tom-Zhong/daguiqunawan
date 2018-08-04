@@ -1,0 +1,128 @@
+<style lang="less" scoped>
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row wrap;
+  justify-content: center;
+  align-content: center;
+  height: auto;
+  .card {
+    position: relative;
+    width: 90%;
+    padding-bottom: 50%;
+    background-color: #f00;
+    border-radius: 5px;
+    overflow: hidden;
+    &:nth-child(1) {
+      margin-bottom: 10%;
+      background-color: #1afa29;
+    }
+    &:nth-child(2) {
+      background-color: #1296db;
+    }
+    .wrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .bg {
+      width: 100%;
+      height: 100%;
+      .img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        filter: brightness(60%)
+        // filter:brightness(40%);
+      }
+    }
+    .main {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      // background-color: rgba(41, 41, 41, 0.8);
+      color: #fff;
+      padding: 10px;
+      .h2 {
+        font-size: 14px;
+        margin-bottom:3px;
+      }
+      .h1 {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .link {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        padding: 5px;
+        border-radius: 3px;
+        font-size: 14px;
+        background-color: #1296db;
+      }
+    }
+  }
+}
+</style>
+<template>
+  <view class="container {{showIndex ? 'show':'hidden'}}">
+    <view class="card">
+      <view class="wrapper">
+        <view class="bg">
+          <image class='img' mode="aspectFill" src="/assets/img/index/card_1.jpg"></image>
+        </view>
+        <view class="main">
+          <view class="h2">本期活动</view>
+          <view class="h1">活动简介: 本期规划为十渡一日游，十渡作为北京具有特色的山水风景，十分适合团队旅游以及玩耍。</view>
+          <view class="link">查看详情</view>
+        </view>
+      </view>
+    </view>
+    <view class="card">
+      <view class="wrapper">
+        <view class="bg">
+          <image class='img' mode="aspectFill" src="/assets/img/index/card_2.jpg"></image>
+        </view>
+        <view class="main">
+          <view class="h2">往期活动</view>
+          <view class="h1">活动简介: 不到长城非好汉，誓要登顶一览众山！</view>
+          <view class="link">查看回顾</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Index extends wepy.page {
+  props = {
+    showIndex: {
+      type: Boolean,
+      default: false
+    }
+  };
+  config = {
+    navigationBarTitleText: '欢迎'
+  };
+
+  data = {};
+
+  computed = {};
+
+  methods = {};
+
+  events = {};
+
+  onLoad() {}
+}
+</script>

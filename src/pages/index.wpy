@@ -1,0 +1,43 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+     <!-- <welcome :hidden.sync="hidden" :showIndex="showIndex"></welcome> -->
+      <index :showIndex.sync="showIndex"></index>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+// import Welcome from '../components/welcome' // 欢迎界面
+import index from '../components/index' // 主界面
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '欢迎'
+  }
+
+  data = {
+    showIndex: false
+    // hidden: false
+  }
+
+  computed = {};
+
+  components = {
+    // welcome: Welcome,
+    index: index
+  }
+
+  methods = {}
+
+  events = {}
+
+  onload() {
+    // setTimeout(() => {
+    //   this.hidden = 'hidden'
+    //   this.showIndex = true
+    //   this.$apply()
+    // }, 1000)
+  }
+}
+</script>
