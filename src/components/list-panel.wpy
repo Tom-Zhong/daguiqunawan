@@ -1,0 +1,22 @@
+<style lang="less" scoped>
+ 
+.list-wrapper {
+    position:relative;
+    background:#fff;
+    margin-top:10px;
+    overflow:hidden;
+}
+
+</style>
+<template>
+    <view class="list-wrapper">
+        <slot>
+        </slot>
+    </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class ListPanel extends wepy.component {
+  }
+</script>

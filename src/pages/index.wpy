@@ -17,7 +17,7 @@ export default class Index extends wepy.page {
   }
 
   data = {
-    showIndex: false
+    showIndex: true
     // hidden: false
   }
 

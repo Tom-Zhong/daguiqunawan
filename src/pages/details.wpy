@@ -1,0 +1,80 @@
+<style lang="less" scoped>
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  will-change: transform;
+  transition: transform 0.3s linear;
+  transform: translate3d(0, 0, 0);
+}
+.hidden {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.we-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.we-slide:nth-child(1) {
+  background-color: #4390ee;
+}
+.we-slide:nth-child(2) {
+  background-color: #ca4040;
+}
+.we-slide:nth-child(3) {
+  background-color: #ff8604;
+}
+</style>
+<template>
+  <view>
+    <view class="container">
+        <weSwiper :option="swiper">
+        <view class="we-slide">slide 1</view>
+        <view class="we-slide">slide 2</view>
+        <view class="we-slide">slide 3</view>
+        </weSwiper>
+    </view>
+  </view>
+    
+</template>
+
+<script>
+import wepy from 'wepy'
+import weSwiper from 'wepy-com-swiper'
+export default class Details extends wepy.page {
+  config = {
+    navigationBarTitleText: '文章很好看咯'
+  };
+  components = {
+    weSwiper: weSwiper
+  };
+  // data = {
+  //   hidden: 'show',
+  //   showIndex: false
+  // }
+  // props = {
+  //   showIndex: {
+  //     type: Boolean,
+  //     default: false,
+  //     twoWay: true
+  //   }
+  // }
+  methods = {};
+  data = {
+    swiper: {
+      direction: 'horizontal',
+      slideLength: 3
+    //   autoplay: 2000
+    }
+  };
+  onLoad() {
+    // setTimeout(() => this.$invoke('weSwiper', 'slideTo', 2), 3000)
+  }
+}
+</script>

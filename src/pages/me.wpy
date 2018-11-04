@@ -1,0 +1,206 @@
+<style lang="less" scoped>
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background:#f9f9f9;
+}
+.panel {
+  width: 100%;
+  padding-bottom: 60%;
+  position: relative;
+  .layout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    .bg {
+      width: 100%;
+      height: 100%;
+      background-color: #8dcfcb;
+      .img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .main {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      color: #fff;
+      .btn {
+        background-color: #1296db;
+        color: #fff;
+        padding: 0 10px;
+        border-radius: 0;
+      }
+      .userinfo-avatar {
+        width: 128rpx;
+        height: 128rpx;
+        margin: 0 0 20rpx 0;
+        border-radius: 50%;
+      }
+
+      .userinfo-nickname {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      .userinfo-emotion {
+        font-size: 14px;
+      }
+    }
+  }
+  
+}
+
+.zan-cell {
+  position:relative;
+  padding:12px 15px;
+  display:flex;
+  align-items:center;
+  line-height:1.4;
+  font-size:14px;
+  .zan-cell__bd {
+    flex: 1;
+  }
+  .zan-cell__ft {
+    padding-right: 13px;
+    position:relative;
+    text-align:right;
+    color:#666;
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 2px;
+      content: " ";
+      display: inline-block;
+      height: 6px;
+      width: 6px;
+      border-width: 2px 2px 0 0;
+      border-color: #c8c8c8;
+      border-style: solid;
+      transform: translateY(-50%) matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    }
+  }
+  
+}
+
+</style>
+<template>
+  <view class="container">
+    <!--index.wxml-->
+    <view class="panel">
+      <view class="layout">
+        <view class="bg">
+          <image class="img" mode="aspectFill" src="http://pic1.win4000.com/wallpaper/2018-01-27/5a6c3fce611f2.jpg"></image>
+        </view> 
+        <view class="main">
+          <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="btn"> 获取头像昵称 </button>
+          <block wx:else>
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            <text class="userinfo-emotion">这个人很懒，啥玩意也没留下</text>
+          </block>
+        </view>
+      </view>
+    </view>
+    <list-panel>
+      <view class="zan-cell zan-cell--access">
+        <view class="zan-cell__bd">个人信息</view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </list-panel>
+    <list-panel>
+      <view class="zan-cell zan-cell--access">
+        <view class="zan-cell__bd">活动列表</view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </list-panel>
+    <list-panel>
+      <view class="zan-cell zan-cell--access">
+        <view class="zan-cell__bd">参加过的活动</view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </list-panel>
+    <list-panel>
+      <view class="zan-cell zan-cell--access">
+        <view class="zan-cell__bd">关于作者</view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </list-panel>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import ListPanel from '../components/list-panel'
+export default class Me extends wepy.page {
+  config = {
+    navigationBarTitleText: '欢迎'
+  }
+  components = {
+    'list-panel': ListPanel
+  }
+  data = {
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wepy.canIUse('button.open-type.getUserInfo')
+  }
+  onLoad () {
+    // console.log(this.$parent)
+    if (this.$parent.globalData.userInfo) {
+      // console.log(this.$parent.globalData.userInfo)
+      this.userInfo = this.$parent.globalData.userInfo
+      this.hasUserInfo = true
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      this.$parent.userInfoReadyCallback = res => {
+        this.userInfo = this.$parent.globalData.userInfo
+        this.hasUserInfo = true
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wepy.getUserInfo({
+        success: res => {
+          this.$parent.globalData.userInfo = res.userInfo
+          this.userInfo = this.$parent.globalData.userInfo
+          this.hasUserInfo = true
+        }
+      })
+    }
+  }
+  getUserInfo (e) {
+    console.log(e)
+    if (e.detail.userInfo) {
+      this.$parent.globalData.userInfo = e.detail.userInfo
+      this.userInfo = e.detail.userInfo
+      this.hasUserInfo = true
+      return
+    }
+
+    wepy.showModal({
+      title: '用户授权获取失败',
+      content: 'QAQ，授权好像失败了，可尝试重新点击获取权限!',
+      showCancel: false,
+      success: function(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        }
+      }
+    })
+  }
+}
+</script>

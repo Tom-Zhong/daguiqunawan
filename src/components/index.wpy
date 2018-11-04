@@ -73,7 +73,7 @@
 }
 </style>
 <template>
-  <view class="container {{showIndex ? 'show':'hidden'}}">
+  <view class="container">
     <view class="card">
       <view class="wrapper">
         <view class="bg">
@@ -82,7 +82,7 @@
         <view class="main">
           <view class="h2">本期活动</view>
           <view class="h1">活动简介: 本期规划为十渡一日游，十渡作为北京具有特色的山水风景，十分适合团队旅游以及玩耍。</view>
-          <view class="link">查看详情</view>
+          <view class="link" bindtap="goToDatail" data-id="zsdfad21314">查看详情</view>
         </view>
       </view>
     </view>
@@ -94,7 +94,7 @@
         <view class="main">
           <view class="h2">往期活动</view>
           <view class="h1">活动简介: 不到长城非好汉，誓要登顶一览众山！</view>
-          <view class="link">查看回顾</view>
+          <view class="link" bindtap="goToDatail" data-id="zsdfad21313">查看回顾</view>
         </view>
       </view>
     </view>
@@ -119,7 +119,16 @@ export default class Index extends wepy.page {
 
   computed = {};
 
-  methods = {};
+  methods = {
+    goToDatail(event) {
+      console.log('[ Event emiited ]: show the aritcile detail!')
+      console.log(event.target.dataset.id)
+      // console.log(this)
+      // this.$parent.navigate({url: '/pages/details'}, [event.target.dataset.id])
+      // 使用组件进行跳转时，记得要用回父组件调用跳转函数
+      this.$parent.$navigate('/pages/details')
+    }
+  };
 
   events = {};
 
