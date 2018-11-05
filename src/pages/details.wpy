@@ -40,6 +40,9 @@
         <view class="we-slide">slide 3</view>
         </weSwiper>
     </view>
+    <view>
+      <image mode="aspectFill" src="http://qiniu.webxinxin.com/606aaa0646775242bbaf66c210aac68c0423026e.jpg" @load="bannerLoad" style="display:block;width:{{imgdataWidth}};height:{{imgdataHeight}}"/>
+    </view>
   </view>
     
 </template>
@@ -50,29 +53,32 @@ import weSwiper from 'wepy-com-swiper'
 export default class Details extends wepy.page {
   config = {
     navigationBarTitleText: '文章很好看咯'
-  };
+  }
   components = {
     weSwiper: weSwiper
-  };
-  // data = {
-  //   hidden: 'show',
-  //   showIndex: false
-  // }
-  // props = {
-  //   showIndex: {
-  //     type: Boolean,
-  //     default: false,
-  //     twoWay: true
-  //   }
-  // }
-  methods = {};
+  }
+  methods = {
+    bannerLoad(event) {
+      let _that = this
+      wx.getSystemInfo({
+        success(res) {
+          _that.imgdataWidth = res.windowWidth + 'px'
+          _that.imgdataHeight =
+            res.windowWidth / event.detail.width * event.detail.height + 'px'
+          _that.$apply()
+        }
+      })
+    }
+  }
   data = {
     swiper: {
       direction: 'horizontal',
       slideLength: 3
-    //   autoplay: 2000
-    }
-  };
+      //   autoplay: 2000
+    },
+    imgdataWidth: 0,
+    imgdataHeight: 0
+  }
   onLoad() {
     // setTimeout(() => this.$invoke('weSwiper', 'slideTo', 2), 3000)
   }
