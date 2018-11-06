@@ -35,7 +35,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, black, rgba(0, 0, 0, 0.1));
 }
 .title {
   font-size: 40rpx;
@@ -56,7 +56,29 @@
     margin-right: 8rpx;
   }
 }
-
+.dash {
+  width: 20%;
+  height: 6rpx;
+  background-color: #ccc;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-left: -10%;
+}
+.content-box {
+  position: relative;
+  padding: 20rpx 0 32rpx;
+  .abstract {
+    width: 50%;
+    margin: 0 auto;
+    .text {
+      text-align: center;
+      white-space: pre-line;
+      color: #656565;
+      line-height: 1.4;
+    }
+  }
+}
 </style>
 <template>
   <view>
@@ -68,7 +90,7 @@
         </weSwiper>
     </view> -->
     <view style="position:relative;display:block;width:{{imgdataWidth}};height:{{imgdataHeight}}">
-      <image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541472829828&di=fb42649b8db5f645b11964087a9372ab&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F0%2F5789d87be269b.jpg" @load="bannerLoad" style="display:block;width:{{imgdataWidth}};height:{{imgdataHeight}};"/>
+      <image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541556708275&di=c1c4c3a553a33c39a4303d1413f9571a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fdc54564e9258d109e22cd58bda58ccbf6c814d3f.jpg" @load="bannerLoad" style="display:block;width:{{imgdataWidth}};height:{{imgdataHeight}};"/>
       <view class="head-box">
         <view class="title">北京的旅游胜地： 天安门</view>
         <view class="about-info">
@@ -80,7 +102,17 @@
         <view class="cover" style="display: flex;margin-top: 8px;">
           <view style="flex: 2;background-color: #fff; height: 15px"></view>
           <view style="width:0;height:0;border-width:15px 0 0 15px;border-style:solid;border-color:transparent transparent transparent #ccc;position:relative;"></view>
+          <view class="dash"></view>
         </view>
+      </view>
+      <view class="content-box">
+        <view class="abstract">
+          <view class="text">这次，
+            我们要介绍的是:
+            天安门！！！
+          </view>
+        </view>
+        <view class="dash"></view>
       </view>
     </view>
     
