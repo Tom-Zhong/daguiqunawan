@@ -35,14 +35,13 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding-left: 10px;
-  padding-bottom: 16px;
   background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
 }
 .title {
-  font-size: 60rpx;
+  font-size: 40rpx;
   color: #fff;
   margin-bottom: 12rpx;
+  padding-left: 20rpx;
 }
 .about-info {
   color: #ccc;
@@ -50,6 +49,7 @@
   display: flex;
   align-content: center;
   align-items: center;
+  padding-left: 20rpx;
   .lite-icon {
     width: 32rpx;
     height: 32rpx;
@@ -76,6 +76,10 @@
           <text style="margin-right: 30rpx;">18年11月6日</text>
           <image src="/assets/img/details/author_icon.png" class="lite-icon"/>
           <text>大贵</text>
+        </view>
+        <view class="cover" style="display: flex;margin-top: 8px;">
+          <view style="flex: 2;background-color: #fff; height: 15px"></view>
+          <view style="width:0;height:0;border-width:15px 0 0 15px;border-style:solid;border-color:transparent transparent transparent #ccc;position:relative;"></view>
         </view>
       </view>
     </view>
