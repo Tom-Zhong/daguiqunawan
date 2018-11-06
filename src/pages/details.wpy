@@ -30,19 +30,56 @@
 .we-slide:nth-child(3) {
   background-color: #ff8604;
 }
+.head-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: 10px;
+  padding-bottom: 16px;
+  background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+}
+.title {
+  font-size: 60rpx;
+  color: #fff;
+  margin-bottom: 12rpx;
+}
+.about-info {
+  color: #ccc;
+  font-size: 24rpx;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  .lite-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 8rpx;
+  }
+}
+
 </style>
 <template>
   <view>
-    <view class="container">
+    <!-- <view class="container">
         <weSwiper :option="swiper">
         <view class="we-slide">slide 1</view>
         <view class="we-slide">slide 2</view>
         <view class="we-slide">slide 3</view>
         </weSwiper>
+    </view> -->
+    <view style="position:relative;display:block;width:{{imgdataWidth}};height:{{imgdataHeight}}">
+      <image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541472829828&di=fb42649b8db5f645b11964087a9372ab&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F0%2F5789d87be269b.jpg" @load="bannerLoad" style="display:block;width:{{imgdataWidth}};height:{{imgdataHeight}};"/>
+      <view class="head-box">
+        <view class="title">北京的旅游胜地： 天安门</view>
+        <view class="about-info">
+          <image src="/assets/img/details/time_icon.png" class="lite-icon"/>
+          <text style="margin-right: 30rpx;">18年11月6日</text>
+          <image src="/assets/img/details/author_icon.png" class="lite-icon"/>
+          <text>大贵</text>
+        </view>
+      </view>
     </view>
-    <view>
-      <image mode="aspectFill" src="http://qiniu.webxinxin.com/606aaa0646775242bbaf66c210aac68c0423026e.jpg" @load="bannerLoad" style="display:block;width:{{imgdataWidth}};height:{{imgdataHeight}}"/>
-    </view>
+    
   </view>
     
 </template>
