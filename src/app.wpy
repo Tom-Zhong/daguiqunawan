@@ -48,7 +48,8 @@ export default class extends wepy.app {
           text: '玩过啥'
         }
       ]
-    }
+    },
+    "cloud": true
   };
 
   globalData = {
@@ -100,6 +101,10 @@ export default class extends wepy.app {
     }
   }
   onLaunch () {
+    // 云函数初始化
+    wx.cloud.init({
+      env: 'daguiqunawa-87cae5'
+    })
     this.testAsync()
     // 登录
     wepy.login({

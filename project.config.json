@@ -11,5 +11,6 @@
 	"appid": "wx3e17d34112ed6408",
 	"projectname": "hello_wepy",
 	"miniprogramRoot": "./dist",
-	"condition": {}
+	"condition": {},
+	"cloudfunctionRoot": "./functions/"
 }
