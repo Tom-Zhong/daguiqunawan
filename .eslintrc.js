@@ -27,6 +27,6 @@ module.exports = {
     'space-before-function-paren': 0,
     // "no-extra-semi": 2,
     "semi": ["error", "never"]
-    
-  }
+  },
+  globals: { wx: true }
 }

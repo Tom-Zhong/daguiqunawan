@@ -97,13 +97,6 @@
 </style>
 <template>
   <view>
-    <!-- <view class="container">
-        <weSwiper :option="swiper">
-        <view class="we-slide">slide 1</view>
-        <view class="we-slide">slide 2</view>
-        <view class="we-slide">slide 3</view>
-        </weSwiper>
-    </view> -->
     <view style="position:relative;display:block;width:{{imgdataWidth}};height:{{imgdataHeight}}">
       <image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541556708275&di=c1c4c3a553a33c39a4303d1413f9571a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fdc54564e9258d109e22cd58bda58ccbf6c814d3f.jpg" @load="bannerLoad" style="display:block;width:{{imgdataWidth}};height:{{imgdataHeight}};"/>
       <view class="head-box">
@@ -137,6 +130,13 @@
             </view>
         </repeat>
       </view>
+      <view class="container">
+        <weSwiper :option="swiper">
+          <view class="we-slide">slide 1</view>
+          <view class="we-slide">slide 2</view>
+          <view class="we-slide">slide 3</view>
+        </weSwiper>
+      </view>
     </view>
     
   </view>
@@ -169,8 +169,9 @@ export default class Details extends wepy.page {
   data = {
     swiper: {
       direction: 'horizontal',
-      slideLength: 3
-      //   autoplay: 2000
+      slideLength: 3,
+      autoplay: 2000,
+      timingFunction: 'linear'
     },
     imgdataWidth: 0,
     imgdataHeight: 0,
@@ -182,7 +183,6 @@ export default class Details extends wepy.page {
     ]
   }
   onLoad() {
-    // setTimeout(() => this.$invoke('weSwiper', 'slideTo', 2), 3000)
   }
 }
 </script>

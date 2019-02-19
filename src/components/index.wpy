@@ -121,8 +121,8 @@ export default class Index extends wepy.page {
 
   methods = {
     goToDatail(event) {
-      console.log('[ Event emiited ]: show the aritcile detail!')
-      console.log(event.target.dataset.id)
+      // console.log('[ Event emiited ]: show the aritcile detail!')
+      // console.log(event.target.dataset.id) // 文章ID
       // console.log(this)
       // this.$parent.navigate({url: '/pages/details'}, [event.target.dataset.id])
       // 使用组件进行跳转时，记得要用回父组件调用跳转函数

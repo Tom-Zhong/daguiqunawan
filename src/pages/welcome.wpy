@@ -47,7 +47,7 @@ export default class Welcome extends wepy.page {
   // }
   methods = {}
   onLoad () {
-    console.log('[Page Welcome] I will dissappear in 3 seconds!')
+    // console.log('[Page Welcome] I will dissappear in 3 seconds!')
     setTimeout(() => {
       this.$switch({url: '/pages/index'})
     }, 3000)
