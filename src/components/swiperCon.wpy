@@ -118,7 +118,7 @@ export default class SwiperCon extends wepy.component {
     }
   }
   onLoad() {
-    console.log('1111')
+    // console.log('1111')
   }
 }
 </script>
