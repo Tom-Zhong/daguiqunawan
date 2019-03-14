@@ -94,6 +94,22 @@
     margin: 0 auto;
   }
 }
+.textarea {
+  font-size: 28rpx;
+  margin: 10%;
+  background-color: lightgray;
+  width: 80%;
+  height: 100px;
+}
+
+.placeholder {
+  font-size: 28rpx;
+  color: gray;
+}
+
+.container {
+  padding: 0 20rpx;
+}
 </style>
 <template>
   <view>
@@ -130,13 +146,16 @@
             </view>
         </repeat>
       </view>
-      <view class="container">
-        <weSwiper :option="swiper">
-          <view class="we-slide">slide 1</view>
-          <view class="we-slide">slide 2</view>
-          <view class="we-slide">slide 3</view>
-        </weSwiper>
+      <view style="text-align: center; margin-bottom: 10px;font-size: 32rpx; font-weight: bold;">
+        活动详情图
       </view>
+      <view class="container">
+        <SwiperCon :list="swiperList"></SwiperCon>
+      </view>
+      <!-- <form bindsubmit="bindFormSubmit">
+        <textarea placeholder="form 中的 textarea" name="textarea" />
+        <button form-type="submit">提交</button>
+      </form> -->
     </view>
     
   </view>
@@ -145,13 +164,14 @@
 
 <script>
 import wepy from 'wepy'
-import weSwiper from 'wepy-com-swiper'
+import SwiperCon from '@/components/swiperCon'
 export default class Details extends wepy.page {
   config = {
     navigationBarTitleText: '文章详情'
   }
   components = {
-    weSwiper: weSwiper
+    // weSwiper: weSwiper
+    SwiperCon: SwiperCon
   }
   methods = {
     bannerLoad(event) {
@@ -164,6 +184,10 @@ export default class Details extends wepy.page {
           _that.$apply()
         }
       })
+    },
+    bindFormSubmit(e) {
+      let a = e.detail.value.textarea
+      console.log(a.replace('\n', 'gagag'))
     }
   }
   data = {
@@ -180,6 +204,11 @@ export default class Details extends wepy.page {
       {type: 'img', content: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541607623051&di=d67fa73820831eb41366e2885aafbb6f&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F3edda685d21ff1e2e537b39d937080a81ba23fdf.jpg'},
       {type: 'string', content: '云开发提供了一个 JSON 数据库，顾名思义，数据库中的每条记录都是一个 JSON 格式的对象。一个数据库可以有多个集合（相当于关系型数据中的表），集合可看做一个 JSON 数组，数组中的每个对象就是一条记录，记录的格式是 JSON 对象。'},
       {type: 'img', content: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541607623051&di=d67fa73820831eb41366e2885aafbb6f&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F3edda685d21ff1e2e537b39d937080a81ba23fdf.jpg'}
+    ],
+    swiperList: [
+      { src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552584795188&di=daa67b3583e785a8387e75c8c472a282&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F503d269759ee3d6d0677650149166d224e4ade43.jpg' },
+      { src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552584795381&di=c7b14faf2325a207ce6500f914f185b8&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Ffaf2b2119313b07e3ab8132d0cd7912397dd8c8a.jpg' },
+      { src: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2440223214,359980458&fm=26&gp=0.jpg' }
     ]
   }
   onLoad() {
